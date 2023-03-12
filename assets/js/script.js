@@ -17,7 +17,7 @@ function searchCityWeatherForecast () {
          url: queryURL, 
          method: "GET"
         }).then(function(response) {
-            let city = response.city.name;        
+            let city = response.city.name; 
             let tempCelsius = Math.floor(response.list[0].main.temp - 273.15);
             let windSpeed = response.list[0].wind.speed;
             let humidity = response.list[0].main.humidity;
@@ -26,21 +26,21 @@ function searchCityWeatherForecast () {
                 `<h2>${city} (${currentDate})</h2>
                 <p>Temp: ${tempCelsius}</p>
                 <p>Wind: ${windSpeed}</p>
-                <p>Humidity ${humidity}:</p>
+                <p>Humidity: ${humidity}</p>
                 <p></p>`);
         })     
 }
  
-
 function fiveDaysWeather() {
     $.ajax({
          url: queryURL, 
          method: "GET"
         }).then(function(response) {
             futureWeatherHeader.append("5-Days Forecast:");
+    
             for(i = 7; i < response.list.length; i += 8) {
 
-            let futureDate = response.list[i].dt_txt;
+            let futureDate = moment().day(Math.floor(i / 8)).format("DD/MM/YY");
             let futureTemp = Math.floor(response.list[i].main.temp - 273.15);
             let futureWind = response.list[i].wind.speed;
             let futureHumidity = response.list[i].main.humidity;
