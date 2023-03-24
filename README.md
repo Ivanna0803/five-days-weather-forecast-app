@@ -1,2 +1,4 @@
-# weather-dashboard
- 5 Day Weather Forecast Dashboard Application
+# 5 Day Weather Forecast Application
+
+## Description
+JavaScript Weather Forecast
