@@ -24,10 +24,10 @@
 
 ## Installation
 This application is able to run inside the browser, you won't need to install anything to run this app.
-To deploy, simply follow the URL and begin searching: 
+To deploy, simply follow the URL and begin searching: https://ivanna0803.github.io/five-days-weather-forecast-app/
 
 ## Usage
-To search for a city weather forecast, enter city name in the input field and press on `blue button "Search"`. After that, the `grey button` with searched city name on it will be created. You can press on that button, if you want to view weather forecast of priviosly searched city again. To delete searched history press on `red button "Delete history"`.
+To search for a city weather forecast, enter city name in the input field and press on `blue button "Search"`. After that, the `grey button` with entered city name on it will be created. You can press on that button, if you want to view weather forecast of priviosly entered city again. To delete searched history press on `red button "Delete history"`.
 
 ## License
 This project is licensed under the MIT license.
