@@ -9,6 +9,7 @@ const currentForecast = $("#this-day-forecast");
 const futureWeatherHeader = $("#future-weather-header");
 const futureForecastCards = $("#future-weather-cards");
 
+// Forecast for current day
 function buildMainWeatherForecast (response) {
     const city = response.city.name;
     const date = moment(response.list[0].dt * 1000).format("DD/MM/YY");
@@ -17,7 +18,7 @@ function buildMainWeatherForecast (response) {
     const tempCelsius = Math.floor(response.list[0].main.temp - 273.15);
     const windSpeed = response.list[0].wind.speed;
     const humidity = response.list[0].main.humidity;
-
+    
     currentForecast.append(
         `<h2>${city} (${date}) <img src="${iconURL}"></h2>
         <p>Temp: ${tempCelsius}</p>
@@ -25,9 +26,10 @@ function buildMainWeatherForecast (response) {
         <p>Humidity: ${humidity}</p>`);     
 }
 
+// Forecast for 5 next days
 function buildFiveDaysWeatherForecast(response) {
     futureWeatherHeader.append("5-Days Forecast:");
-
+    // Iteration throuth API responce, to take correct data for each day
     for(i = 7; i < response.list.length; i += 8) {
         const futureDate = moment(response.list[i].dt * 1000).format("DD/MM/YY");
         const futureIcon = response.list[i].weather[0].icon;
@@ -36,10 +38,15 @@ function buildFiveDaysWeatherForecast(response) {
         const futureWind = response.list[i].wind.speed;
         const futureHumidity = response.list[i].main.humidity;
 
-        futureForecastCards.append(
-            `<div class="card m-2" style="width: 10rem;">
+        futureForecastCards.append(    
+            `<div class="card m-2 rounded" style="width: 10rem;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(21, 239, 210, 0.3);
+            box-shadow:0 8px 32px 0 rgba(24, 90, 157, 0.37);">
                 <div class="card-body rounded-lg">
-                    <h6>${futureDate}</h6>
+                    <h5 class="text-center">${futureDate}</h6>
                     <img src="${futureIconURL}">
                     <p>Temp: ${futureTemp}</p>
                     <p>Wind: ${futureWind}</p>
@@ -89,6 +96,7 @@ function updateLocalStorageHistory(newCity) {
     createSearchHistory();
 }
 
+// Function to creat a searched city buttons
 function createSearchedCityButton(city) {
     const buttonGroup = $(".list-group");
     const buttonId = city.toLowerCase() + '-btn-id';
